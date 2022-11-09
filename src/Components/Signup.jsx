@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Signup() {
+  
   return (
     <div style={{ backgroundColor: "#01282D", height: "100vh" }}>
       <div
@@ -79,7 +80,7 @@ export default function Signup() {
               />
 
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 style={{
                   width: "300px",

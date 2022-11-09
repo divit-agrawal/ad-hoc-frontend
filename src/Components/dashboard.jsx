@@ -1,49 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Dashboard() {
+  const [beat, setBeat] = useState(0);
+
+  const handleBeat = () => {
+    setInterval(
+      ()=>{fetch("http://localhost:3000/heartbeatget")
+      .then((res) => res.json())
+      .then((data) => {
+        setBeat(data.heartbeat);})}
+      ,1000);
+  };
+  useEffect(() => {
+    handleBeat();
+  });
+
   return (
-    <div style={{ background: "#8fd4d9" }}>
-      <div class="header">
-        <div class="header__search">Dashboard</div>
-        <div class="header__avatar"></div>
+    <div
+      style={{
+        fontSize: "2rem",
+        color: "black",
+        padding: "2rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
+      <div className="heading">Wireless Ad-hoc and Sensor Networks Project</div>
+      <div style={{ margin: "2rem",border:"2px solid green",padding: "2rem",borderRadius:"2rem",boxShadow:"2px 2px " }}>Project Review 3</div>
+      <div className="heading">
+      {
+        beat>=0 && <div>Heart Beat : {beat}</div>
+      }
+      {
+      beat>=72 && <div style={{color:"orange"}}>Heart Beat : {beat}</div>
+      }
+      {
+      beat>=82 && <div style={{color:"red"}}>Heart Beat : {beat}</div>
+      }
       </div>
 
-      <main class="main">
-        <div class="main-header">
-          <div class="main-header__heading">Hello User</div>
-          <div class="main-header__updates">Recent Items</div>
-        </div>
-
-        <div class="main-overview">
-          <div class="overviewcard">
-            <div class="overviewcard__icon">Overview</div>
-            <div class="overviewcard__info">Card</div>
-          </div>
-          <div class="overviewcard">
-            <div class="overviewcard__icon">Overview</div>
-            <div class="overviewcard__info">Card</div>
-          </div>
-          <div class="overviewcard">
-            <div class="overviewcard__icon">Overview</div>
-            <div class="overviewcard__info">Card</div>
-          </div>
-          <div class="overviewcard">
-            <div class="overviewcard__icon">Overview</div>
-            <div class="overviewcard__info">Card</div>
-          </div>
-        </div>
-
-        <div class="main-cards">
-          <div class="card">Card</div>
-          <div class="card">Card</div>
-          <div class="card">Card</div>
-        </div>
-      </main>
-
-      <footer class="footer">
-        <div class="footer__copyright">&copy; 2022 MTH</div>
-        <div class="footer__signature">Home based monitoring system</div>
-      </footer>
     </div>
   );
 }

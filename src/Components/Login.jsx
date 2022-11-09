@@ -65,7 +65,7 @@ export default function Login() {
                 required
               />
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 style={{
                   width: "300px",
@@ -92,7 +92,7 @@ export default function Login() {
                 }}
               >
                 <a
-                  href="#"
+                  href="dashboard"
                   style={{ textDecoration: "none", color: "#F5F5F5" }}
                 >
                   Sign In
@@ -113,7 +113,7 @@ export default function Login() {
         <p style={{ color: "#F5F5F5", fontSize: "16px", fontWeight: "bold" }}>
           Don't have an account?{" "}
           <Link to="/signup">
-            <a
+            <a href="/dashboard"
               style={{ textDecoration: "none", color: "#F5F5F5" }}
             >
               Sign Up
